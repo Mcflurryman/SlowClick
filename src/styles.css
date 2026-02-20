@@ -508,6 +508,9 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .keypad-key {
@@ -516,17 +519,21 @@ h3 {
   height: 96px;
   background: linear-gradient(180deg, #191b20, #0f1014);
   color: #f6f7f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: 8px 8px 9px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  justify-items: center;
+  gap: 8px;
+  padding: 8px 8px 10px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 8px 0 #090a0d, 0 12px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
 
 .keypad-key.is-pressed {
@@ -567,8 +574,8 @@ h3 {
 }
 
 .key-led {
-  width: 100%;
-  height: 8px;
+  width: 70%;
+  height: 7px;
   border-radius: 999px;
   background: #333741;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.58);

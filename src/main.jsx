@@ -364,18 +364,20 @@ function ProductPage() {
               key={key.id}
               className={`keypad-key ${pressedKeys.includes(key.id) ? 'is-pressed' : ''}`}
               onPointerDown={(event) => {
+                event.preventDefault();
                 event.currentTarget.setPointerCapture(event.pointerId);
                 pressKey(key.id);
               }}
               onPointerUp={() => releaseKey(key.id)}
               onPointerCancel={() => releaseKey(key.id)}
+              onContextMenu={(event) => event.preventDefault()}
               aria-label={`Tecla ${key.label}`}
             >
+              <span className={`key-led ${pressedKeys.includes(key.id) ? 'is-on' : ''}`} />
               <span className="key-shell">
                 <span className="keycap-top" />
                 <span className="key-switch" />
               </span>
-              <span className={`key-led ${pressedKeys.includes(key.id) ? 'is-on' : ''}`} />
             </button>
           ))}
         </div>
