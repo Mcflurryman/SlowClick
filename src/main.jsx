@@ -487,7 +487,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="producto" element={<ProductPage />} />
+        <Route path="/producto" element={<ProductPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <footer className="footer">
