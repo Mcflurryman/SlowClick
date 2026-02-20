@@ -17,6 +17,7 @@ const product = {
   oldPrice: '$23.99',
   shortDescription:
     'Disenada para smoothies y batidos en menos de 30 segundos, sin cables y lista para llevar.',
+  bullets: ['Portatil y ligera', 'Carga por USB-C', 'Uso rapido en cualquier lugar'],
 };
 
 const faqs = [
