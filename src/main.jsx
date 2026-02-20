@@ -12,16 +12,10 @@ import logoHeavyImg from '../Logoheavy2.png';
 const product = {
   name: 'Smart Blender Pro',
   subtitle: 'Batidora portatil recargable',
-  price: '$39.90',
-  oldPrice: '$59.90',
+  price: '$12.93',
+  oldPrice: '$23.99',
   shortDescription:
     'Disenada para smoothies y batidos en menos de 30 segundos, sin cables y lista para llevar.',
-  bullets: [
-    'Motor potente con cuchillas de acero',
-    'Carga USB-C y bateria de larga duracion',
-    'Vaso resistente libre de BPA',
-    'Limpieza rapida en menos de 1 minuto',
-  ],
 };
 
 const faqs = [
