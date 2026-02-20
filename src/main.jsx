@@ -2,13 +2,13 @@
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './styles.css';
-import descripcion1Img from '../Descripcion1 - copia.jpg';
-import descripcion2Img from '../Descripcion2.jpg';
-import foto2Img from '../Foto2.png';
-import foto1Img from '../foto1.jpg';
-import foto5Img from '../foto5_.jpg';
-import foto6Img from '../foto6.jpg';
-import logoHeavyImg from '../Logoheavy2.png';
+import descripcion1Img from '../assets/Descripcion1 - copia.jpg';
+import descripcion2Img from '../assets/Descripcion2.jpg';
+import foto2Img from '../assets/Foto2.png';
+import foto1Img from '../assets/foto1.jpg';
+import foto5Img from '../assets/foto5_.jpg';
+import foto6Img from '../assets/foto6.jpg';
+import logoHeavyImg from '../assets/Logoheavy2.png';
 
 const product = {
   name: 'Smart Blender Pro',
@@ -76,7 +76,7 @@ function Header() {
           <button className="link-btn" onClick={() => navigate('/')}>
             Home
           </button>
-          <button className="link-btn" onClick={() => navigate('/producto')}>
+          <button className="link-btn" onClick={() => navigate('/products')}>
             Producto
           </button>
         </div>
@@ -96,10 +96,10 @@ function HomePage() {
           Todo el trafico llega a una sola oferta: menos distracciones, mas claridad y una compra mas rapida.
         </p>
         <div className="row gap-sm wrap">
-          <button className="btn btn-primary" onClick={() => navigate('/producto')}>
+          <button className="btn btn-primary" onClick={() => navigate('/products')}>
             Ver producto
           </button>
-          <button className="btn btn-ghost" onClick={() => navigate('/producto')}>
+          <button className="btn btn-ghost" onClick={() => navigate('/products')}>
             Comprar ahora
           </button>
         </div>
@@ -487,6 +487,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductPage />} />
         <Route path="/producto" element={<ProductPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
