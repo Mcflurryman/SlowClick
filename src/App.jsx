@@ -70,7 +70,7 @@ function App() {
       <div className="bg-noise"></div>
 
       <header className="topbar">
-        <p>Envio gratis en pedidos mayores a $49 | 30 dias de garantia</p>
+        <p>Oferta hasta fin de existencias</p>
       </header>
 
       <nav className="navbar">
