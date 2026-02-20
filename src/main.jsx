@@ -13,17 +13,16 @@ import logoHeavyImg from '../assets/Logoheavy2.png';
 const product = {
   name: 'Smart Blender Pro',
   subtitle: 'Batidora portatil recargable',
-  price: '$12.93',
-  oldPrice: '$23.99',
+  price: '€11,93',
+  oldPrice: '€23.99',
   shortDescription:
     'Disenada para smoothies y batidos en menos de 30 segundos, sin cables y lista para llevar.',
-  bullets: ['Portatil y ligera', 'Carga por USB-C', 'Uso rapido en cualquier lugar'],
 };
 
 const faqs = [
   {
     q: 'Cuanto tarda el envio?',
-    a: 'Preparacion en 24-48h y entrega estimada de 3 a 7 dias habiles.',
+    a: 'La preparacion del pedido tarda de 3-4 dias.',
   },
   {
     q: 'Tiene garantia?',
@@ -42,7 +41,7 @@ const faqs = [
 const quickFaqs = [
   {
     q: 'Cuanto tarda el envio?',
-    a: 'Preparacion en 24-48h y entrega estimada de 3 a 7 dias habiles.',
+    a: 'La preparacion del pedido tarda de 3-4 dias.',
   },
   {
     q: 'Tiene garantia?',
@@ -66,7 +65,7 @@ function Header() {
   return (
     <>
       <header className="topbar">
-        <p>Envio gratis en pedidos +$49 | 30 dias de garantia</p>
+        <p>Envio gratis en pedidos +€49 | 30 dias de garantia</p>
       </header>
       <nav className="navbar container">
         <button className="logo link-btn" onClick={() => navigate('/')}>
@@ -130,6 +129,10 @@ function ProductPage() {
   const [pressedKeys, setPressedKeys] = useState([]);
   const activeImage = productImages[activeIndex];
   const waitingImages = productImages.filter((_, index) => index !== activeIndex);
+  const currentPrice = Number.parseFloat(product.price.replace('€', '').replace(',', '.'));
+  const previousPrice = Number.parseFloat(product.oldPrice.replace('€', '').replace(',', '.'));
+  const discountPercent =
+    previousPrice > 0 ? Math.round(((previousPrice - currentPrice) / previousPrice) * 100) : 0;
   const keyDefs = [
     { id: 0, label: 'Q', color: '#ff6f6f' },
     { id: 1, label: 'W', color: '#74ff79' },
@@ -217,28 +220,22 @@ function ProductPage() {
           <div className="price-row">
             <span className="new-price">{product.price}</span>
             <span className="old-price">{product.oldPrice}</span>
-            <span className="save-badge">-33%</span>
+            <span className="save-badge">-{discountPercent}%</span>
           </div>
 
           <ul className="quick-benefits">
             <li>
-              <span className="qb-icon">●</span>
-              <span>Descarga tension en segundos</span>
+              <span className="qb-icon">😌</span>
+              <span>Calma la ansiedad en segundos.</span>
             </li>
             <li>
-              <span className="qb-icon">●</span>
-              <span>Sustituye el habito de morder unas</span>
+              <span className="qb-icon">🧠</span>
+              <span>Te ayuda con tu TDAH.</span>
             </li>
             <li>
-              <span className="qb-icon">●</span>
-              <span>Mecanico real con luz RGB</span>
+              <span className="qb-icon">💅</span>
+              <span>No te morderas mas las unas.</span>
             </li>
-          </ul>
-
-          <ul className="feature-list">
-            {product.bullets.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
           </ul>
 
           <div className="cta-group">
@@ -252,7 +249,16 @@ function ProductPage() {
             {quickFaqs.map((item) => (
               <details key={item.q} className="card-soft">
                 <summary>{item.q}</summary>
-                <p className="muted">{item.a}</p>
+                {item.q === 'Cuanto tarda el envio?' ? (
+                  <p className="muted">
+                    {item.a}
+                    <br />
+                    <br />
+                    El envio tarda de <strong>6 a 8</strong> dias habiles.
+                  </p>
+                ) : (
+                  <p className="muted">{item.a}</p>
+                )}
               </details>
             ))}
           </div>
@@ -461,7 +467,16 @@ function ProductPage() {
           {faqs.map((item) => (
             <details key={item.q} className="card-soft">
               <summary>{item.q}</summary>
-              <p className="muted">{item.a}</p>
+              {item.q === 'Cuanto tarda el envio?' ? (
+                <p className="muted">
+                  {item.a}
+                  <br />
+                  <br />
+                  El envio tarda de <strong>6 a 8</strong> dias habiles.
+                </p>
+              ) : (
+                <p className="muted">{item.a}</p>
+              )}
             </details>
           ))}
         </div>
