@@ -7,7 +7,7 @@ import foto2Img from '../Foto2.png';
 import foto1Img from '../foto1.jpg';
 import foto5Img from '../foto5_.jpg';
 import foto6Img from '../foto6.jpg';
-import logo2Img from '../logo2.png';
+import logoHeavyImg from '../Logoheavy2.png';
 
 const product = {
   name: 'Smart Blender Pro',
@@ -80,7 +80,7 @@ function Header({ onNavigate }) {
       </header>
       <nav className="navbar container">
         <button className="logo link-btn" onClick={() => onNavigate('/')}>
-          <img src={logo2Img} alt="Logo de la tienda" className="logo-image" />
+          <img src={logoHeavyImg} alt="Logo de la tienda" className="logo-image" />
         </button>
 
         <div className="menu">
