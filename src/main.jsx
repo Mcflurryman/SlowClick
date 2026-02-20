@@ -1,5 +1,6 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './styles.css';
 import descripcion1Img from '../Descripcion1 - copia.jpg';
 import descripcion2Img from '../Descripcion2.jpg';
@@ -59,29 +60,23 @@ const productImages = [
   { id: 'foto2', label: 'Foto2', src: foto2Img },
 ];
 
-function navigate(path, setPath) {
-  if (window.location.pathname !== path) {
-    window.history.pushState({}, '', path);
-  }
-  setPath(path);
-}
-
-function Header({ onNavigate }) {
+function Header() {
+  const navigate = useNavigate();
   return (
     <>
       <header className="topbar">
         <p>Envio gratis en pedidos +$49 | 30 dias de garantia</p>
       </header>
       <nav className="navbar container">
-        <button className="logo link-btn" onClick={() => onNavigate('/')}>
+        <button className="logo link-btn" onClick={() => navigate('/')}>
           <img src={logoHeavyImg} alt="Logo de la tienda" className="logo-image" />
         </button>
 
         <div className="menu">
-          <button className="link-btn" onClick={() => onNavigate('/')}>
+          <button className="link-btn" onClick={() => navigate('/')}>
             Home
           </button>
-          <button className="link-btn" onClick={() => onNavigate('/producto')}>
+          <button className="link-btn" onClick={() => navigate('/producto')}>
             Producto
           </button>
         </div>
@@ -90,7 +85,8 @@ function Header({ onNavigate }) {
   );
 }
 
-function HomePage({ onNavigate }) {
+function HomePage() {
+  const navigate = useNavigate();
   return (
     <main className="container page-gap">
       <section className="home-hero card">
@@ -100,10 +96,10 @@ function HomePage({ onNavigate }) {
           Todo el trafico llega a una sola oferta: menos distracciones, mas claridad y una compra mas rapida.
         </p>
         <div className="row gap-sm wrap">
-          <button className="btn btn-primary" onClick={() => onNavigate('/producto')}>
+          <button className="btn btn-primary" onClick={() => navigate('/producto')}>
             Ver producto
           </button>
-          <button className="btn btn-ghost" onClick={() => onNavigate('/producto')}>
+          <button className="btn btn-ghost" onClick={() => navigate('/producto')}>
             Comprar ahora
           </button>
         </div>
@@ -485,34 +481,27 @@ function ProductPage() {
 }
 
 function App() {
-  const [path, setPath] = useState(window.location.pathname || '/');
-
-  useEffect(() => {
-    const onPopState = () => setPath(window.location.pathname || '/');
-    window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
-  }, []);
-
-  const safePath = useMemo(() => {
-    if (path === '/producto' || path === '/') return path;
-    return '/';
-  }, [path]);
-
-  const onNavigate = (nextPath) => navigate(nextPath, setPath);
-
   return (
     <>
       <div className="bg-noise"></div>
-      <Header onNavigate={onNavigate} />
-      {safePath === '/producto' ? <ProductPage /> : <HomePage onNavigate={onNavigate} />}
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/producto" element={<ProductPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <footer className="footer">
         <p>2026 Nova Store. Todos los derechos reservados.</p>
       </footer>
     </>
   );
 }
-
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('No existe #root en index.html');
 
-ReactDOM.createRoot(rootEl).render(<App />);
+ReactDOM.createRoot(rootEl).render(
+  <HashRouter>
+    <App />
+  </HashRouter>
+);
+
