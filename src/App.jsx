@@ -2,19 +2,19 @@
   {
     label: 'Viral',
     name: 'Mini Proyector HD',
-    description: 'Cine en casa en segundos con conexion inalambrica.',
+    description: 'Cine en casa en segundos con conexión inalámbrica.',
     price: '$74.00',
   },
   {
     label: 'Nuevo',
     name: 'Masajeador Cuello 3D',
-    description: 'Relaja tension muscular con calor inteligente.',
+    description: 'Relaja tensión muscular con calor inteligente.',
     price: '$29.90',
   },
   {
     label: 'Top Seller',
     name: 'Auriculares X-Bass',
-    description: 'Cancelacion de ruido y bateria de larga duracion.',
+    description: 'Cancelación de ruido y batería de larga duración.',
     price: '$44.90',
   },
 ];
@@ -22,21 +22,21 @@
 const benefits = [
   {
     title: 'Pago seguro',
-    description: 'Procesamiento cifrado y proteccion total de compra.',
+    description: 'Procesamiento cifrado y protección total de compra.',
   },
   {
-    title: 'Envio rapido',
+    title: 'Envío rápido',
     description: 'Despachos en 24-48h con seguimiento en tiempo real.',
   },
   {
     title: 'Soporte real',
-    description: 'Atencion por chat y correo durante toda la semana.',
+    description: 'Atención por chat y correo durante toda la semana.',
   },
 ];
 
 const reviews = [
   {
-    quote: 'Llego rapido y la calidad es mejor de lo que esperaba. Volvere a comprar.',
+    quote: 'Llegó rápido y la calidad es mejor de lo que esperaba. Volveré a comprar.',
     author: 'Camila R.',
   },
   {
@@ -44,23 +44,23 @@ const reviews = [
     author: 'Daniel M.',
   },
   {
-    quote: 'Me gusto la presentacion y el seguimiento del envio. Todo perfecto.',
+    quote: 'Me gustó la presentación y el seguimiento del envío. Todo perfecto.',
     author: 'Laura P.',
   },
 ];
 
 const faqs = [
   {
-    question: 'Cuanto tarda el envio?',
-    answer: 'Generalmente entre 3 y 8 dias habiles segun tu ubicacion.',
+    question: '¿Cuánto tarda el envío?',
+    answer: 'Generalmente entre 3 y 8 días hábiles según tu ubicación.',
   },
   {
-    question: 'Puedo devolver un producto?',
-    answer: 'Si, tienes 30 dias para solicitar cambios o devoluciones.',
+    question: '¿Puedo devolver un producto?',
+    answer: 'Sí, tienes 30 días para solicitar cambios o devoluciones.',
   },
   {
-    question: 'Que metodos de pago aceptan?',
-    answer: 'Tarjetas de credito/debito y pasarelas digitales seguras.',
+    question: '¿Qué métodos de pago aceptan?',
+    answer: 'Tarjetas de crédito/débito y pasarelas digitales seguras.',
   },
 ];
 
@@ -98,9 +98,9 @@ function App() {
         <section className="hero">
           <div className="hero-content">
             <span className="pill">TOP PRODUCTO DEL MES</span>
-            <h1>Tu tienda viral para vender mas con estilo</h1>
+            <h1>Tu tienda viral para vender más con estilo</h1>
             <p>
-              Disenada para convertir: visual potente, urgencia real y enfoque en confianza para que cada visita se
+              Diseñada para convertir: visual potente, urgencia real y enfoque en confianza para que cada visita se
               acerque a una compra.
             </p>
             <div className="hero-actions">
@@ -108,7 +108,7 @@ function App() {
                 Comprar ahora
               </a>
               <a className="btn btn-ghost" href="#beneficios">
-                Como funciona
+                Cómo funciona
               </a>
             </div>
             <div className="metrics">
@@ -118,7 +118,7 @@ function App() {
               </article>
               <article>
                 <h3>4.9/5</h3>
-                <p>valoracion media</p>
+                <p>valoración media</p>
               </article>
               <article>
                 <h3>48h</h3>
@@ -130,8 +130,8 @@ function App() {
           <div className="hero-card">
             <div className="shine"></div>
             <p className="tag">Oferta Flash</p>
-            <h2>Smart Blender Pro</h2>
-            <p className="desc">Portatil, recargable y perfecto para smoothies en cualquier lugar.</p>
+            <h2>Teclado mecánico SlowClick</h2>
+            <p className="desc">Portátil, recargable y perfecto para smoothies en cualquier lugar.</p>
             <div className="price-row">
               <span className="new-price">$39.90</span>
               <span className="old-price">$59.90</span>
@@ -143,7 +143,7 @@ function App() {
         <section className="products" id="productos">
           <div className="section-head">
             <h2>Productos destacados</h2>
-            <p>Seleccionados por tendencia, margen y conversion.</p>
+            <p>Seleccionados por tendencia, margen y conversión.</p>
           </div>
 
           <div className="product-grid">

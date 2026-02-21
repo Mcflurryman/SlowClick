@@ -11,45 +11,43 @@ import foto6Img from '../assets/foto6.jpg';
 import logoHeavyImg from '../assets/Logoheavy2.png';
 
 const product = {
-  name: 'Smart Blender Pro',
-  subtitle: 'Batidora portatil recargable',
+  name: 'Teclado mecánico SlowClick',
+  subtitle: 'Batidora portátil recargable',
   price: '€11,93',
   oldPrice: '€23.99',
-  shortDescription:
-    'Disenada para smoothies y batidos en menos de 30 segundos, sin cables y lista para llevar.',
 };
 
 const faqs = [
   {
-    q: 'Cuanto tarda el envio?',
-    a: 'La preparacion del pedido tarda de 3-4 dias.',
+    q: '¿Cuánto tarda el envío?',
+    a: 'La preparación del pedido tarda de 3-4 días.',
   },
   {
-    q: 'Tiene garantia?',
-    a: 'Si. Tienes 30 dias de garantia de satisfaccion y soporte postventa.',
+    q: '¿Tiene garantía?',
+    a: 'Sí. Tienes 30 días de garantía de satisfacción y soporte posventa.',
   },
   {
-    q: 'Que incluye la caja?',
-    a: 'Batidora, tapa anti fugas, cable USB-C y mini guia de uso.',
+    q: '¿Qué incluye la caja?',
+    a: 'Batidora, tapa antifugas, cable USB-C y mini guía de uso.',
   },
   {
-    q: 'Se puede usar para hielo?',
-    a: 'Si, en cubos pequenos y con suficiente liquido para un mejor resultado.',
+    q: '¿Se puede usar para hielo?',
+    a: 'Sí, en cubos pequeños y con suficiente líquido para un mejor resultado.',
   },
 ];
 
 const quickFaqs = [
   {
-    q: 'Cuanto tarda el envio?',
-    a: 'La preparacion del pedido tarda de 3-4 dias.',
+    q: '¿Cuánto tarda el envío?',
+    a: 'La preparación del pedido tarda de 3-4 días.',
   },
   {
-    q: 'Tiene garantia?',
-    a: 'Si. Tienes 30 dias de garantia de satisfaccion y soporte postventa.',
+    q: '¿Tiene garantía?',
+    a: 'Sí. Tienes 30 días de garantía de satisfacción y soporte posventa.',
   },
   {
-    q: 'Que incluye la caja?',
-    a: 'Batidora, tapa anti fugas, cable USB-C y mini guia de uso.',
+    q: '¿Cuánto dura la batería?',
+    a: 'Nuestros probadores de producto han estado probándolo durante 20000 horas y seguía funcionando.',
   },
 ];
 
@@ -65,7 +63,7 @@ function Header() {
   return (
     <>
       <header className="topbar">
-        <p>Envio gratis en pedidos +€49 | 30 dias de garantia</p>
+        <p>Envío gratis en pedidos +€49 | 30 días de garantía</p>
       </header>
       <nav className="navbar container">
         <button className="logo link-btn" onClick={() => navigate('/')}>
@@ -91,9 +89,9 @@ function HomePage() {
     <main className="container page-gap">
       <section className="home-hero card">
         <p className="pill">SINGLE PRODUCT STORE</p>
-        <h1>Una tienda enfocada en un solo producto que convierte mas</h1>
+        <h1>Una tienda enfocada en un solo producto que convierte más</h1>
         <p className="muted">
-          Todo el trafico llega a una sola oferta: menos distracciones, mas claridad y una compra mas rapida.
+          Todo el tráfico llega a una sola oferta: menos distracciones, más claridad y una compra más rápida.
         </p>
         <div className="row gap-sm wrap">
           <button className="btn btn-primary" onClick={() => navigate('/products')}>
@@ -108,7 +106,7 @@ function HomePage() {
       <section className="home-metrics">
         <article className="card">
           <h3>4.9/5</h3>
-          <p className="muted">Valoracion media</p>
+          <p className="muted">Valoración media</p>
         </article>
         <article className="card">
           <h3>+12K</h3>
@@ -159,6 +157,12 @@ function ProductPage() {
 
   const releaseKey = (keyId) => {
     setPressedKeys((current) => current.filter((id) => id !== keyId));
+  };
+
+  const triggerHaptic = () => {
+    if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+      navigator.vibrate(12);
+    }
   };
 
   const handleTouchStart = (event) => {
@@ -213,7 +217,7 @@ function ProductPage() {
         </div>
 
         <div className="info-col">
-          <p className="stock-alert">Quedan 19 en stock. Ultimas unidades.</p>
+          <p className="stock-alert">Quedan 19 en stock. Últimas unidades.</p>
           <h1>{product.name}</h1>
           <p className="muted">{product.shortDescription}</p>
 
@@ -234,7 +238,7 @@ function ProductPage() {
             </li>
             <li>
               <span className="qb-icon">💅</span>
-              <span>No te morderas mas las unas.</span>
+              <span>No te morderás más las uñas.</span>
             </li>
           </ul>
 
@@ -249,12 +253,18 @@ function ProductPage() {
             {quickFaqs.map((item) => (
               <details key={item.q} className="card-soft">
                 <summary>{item.q}</summary>
-                {item.q === 'Cuanto tarda el envio?' ? (
+                {item.q === '¿Cuánto tarda el envío?' ? (
                   <p className="muted">
                     {item.a}
                     <br />
                     <br />
-                    El envio tarda de <strong>6 a 8</strong> dias habiles.
+                    El envío tarda de <strong>6 a 8</strong> días hábiles.
+                  </p>
+                ) : item.q === '¿Cuánto dura la batería?' ? (
+                  <p className="muted">
+                    {item.a}
+                    <br />
+                    <strong>Así que podemos asegurar que más de 20000h.</strong>
                   </p>
                 ) : (
                   <p className="muted">{item.a}</p>
@@ -271,82 +281,27 @@ function ProductPage() {
         </div>
       </section>
 
-      <section className="flow-card card flow-image">
-        <img src={descripcion2Img} alt="Detalle de construccion del producto" className="flow-image-media" />
-      </section>
-
-      <section className="flow-card card flow-text">
+      <section className="flow-card card flow-text flow-media-stack">
+        <video
+          className="flow-image-media"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label="Demostración del uso del producto"
+        >
+          <source src="/IMG_5091.mp4" type="video/mp4" />
+          Tu navegador no soporta video.
+        </video>
         <h2>¿Manos inquietas?</h2>
         <p>
           Si te muerdes las uñas, esto es para ti.
           <br />
-          Si no puedes estar quieto en reuniones, tambien.
+          Si no puedes estar quieto en reuniones, también.
           <br />
-          Si necesitas tocar algo cuando te pones nervioso, aun mas.
+          Si necesitas tocar algo cuando te pones nervioso, aún más.
         </p>
-        <ul className="flow-chip-list">
-          <li>En la oficina</li>
-          <li>En clase</li>
-          <li>En casa</li>
-          <li>En el transporte</li>
-        </ul>
-      </section>
-
-      <section className="flow-card card flow-image">
-        <img src={foto5Img} alt="Uso real del producto" className="flow-image-media" />
-      </section>
-
-      <section className="flow-card card flow-text">
-        <h2>Tu pausa diaria contra la ansiedad</h2>
-        <p>
-          Vas de prisa todo el dia.
-          <br />
-          Tu mente no para.
-          <br />
-          Tu cuerpo lo nota.
-          <br />
-          No es debilidad. Es saturacion.
-          <br />
-          Una pausa corta cambia mucho.
-          <br />
-          Empieza hoy a recuperar tu calma.
-        </p>
-      </section>
-
-      <section className="benefit-grid card">
-        <article className="benefit-item">
-          <span className="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 12h16M7 7h10M9 17h6" />
-            </svg>
-          </span>
-          <p>Descarga micro-estres inmediato</p>
-        </article>
-        <article className="benefit-item">
-          <span className="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="7" y="3" width="10" height="18" rx="2" />
-              <path d="M10 6h4M10 18h4" />
-            </svg>
-          </span>
-          <p>Portatil y discreto</p>
-        </article>
-        <article className="benefit-item">
-          <span className="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M6 14l6-8 6 8M8 18h8" />
-            </svg>
-          </span>
-          <p>Feedback mecanico satisfactorio</p>
-        </article>
-        <article className="benefit-item">
-          <span className="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 19h16M7 19V9h10v10M9 6h6" />
-            </svg>
-          </span>
-          <p>Perfecto para estudiar o trabajar</p>
-        </article>
       </section>
 
       <section className="keypad-demo card">
@@ -363,6 +318,7 @@ function ProductPage() {
               onPointerDown={(event) => {
                 event.preventDefault();
                 event.currentTarget.setPointerCapture(event.pointerId);
+                triggerHaptic();
                 pressKey(key.id);
               }}
               onPointerUp={() => releaseKey(key.id)}
@@ -372,7 +328,6 @@ function ProductPage() {
             >
               <span className={`key-led ${pressedKeys.includes(key.id) ? 'is-on' : ''}`} />
               <span className="key-shell">
-                <span className="keycap-top" />
                 <span className="key-switch" />
               </span>
             </button>
@@ -380,46 +335,151 @@ function ProductPage() {
         </div>
       </section>
 
+      <section className="flow-card card flow-text flow-media-stack">
+        <img src={foto5Img} alt="Uso real del producto" className="flow-image-media" />
+        <h2>Tu pausa diaria contra la ansiedad</h2>
+        <p>
+          Vas de prisa todo el día.
+          <br />
+          Tu mente no para.
+          <br />
+          Tu cuerpo lo nota.
+          <br />
+          No es debilidad. Es saturación.
+          <br />
+          Una pausa corta cambia mucho.
+          <br />
+          Empieza hoy a recuperar tu calma.
+        </p>
+      </section>
+
+      <section className="benefit-grid card">
+        <article className="benefit-item">
+          <span className="benefit-icon benefit-icon-energy" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M13.5 2 5 13h5l-1.5 9L19 10h-5L13.5 2Z" />
+            </svg>
+          </span>
+          <p>Descarga el estrés en 2 segundos</p>
+        </article>
+        <article className="benefit-item">
+          <span className="benefit-icon benefit-icon-pocket" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 8V6a5 5 0 0 1 10 0v2" />
+              <rect x="4" y="8" width="16" height="12" rx="3" />
+              <path d="M9 12h6" />
+            </svg>
+          </span>
+          <p>Portátil y discreto</p>
+        </article>
+        <article className="benefit-item">
+          <span className="benefit-icon benefit-icon-key" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="5" width="16" height="14" rx="3" />
+              <rect x="8" y="9" width="8" height="6" rx="1.5" />
+              <path d="M9 18h6" />
+            </svg>
+          </span>
+          <p>Satisfacción al instante</p>
+        </article>
+        <article className="benefit-item">
+          <span className="benefit-icon benefit-icon-focus" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <p>Mantén el foco durante más tiempo</p>
+        </article>
+      </section>
+
       <section className="section-block">
         <h2>Beneficios clave</h2>
         <div className="grid-benefits">
-          <article className="card-soft">
-            <h3>Potencia real</h3>
-            <p className="muted">Textura uniforme en segundos para batidos y smoothies.</p>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Calma inmediata</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Reduce el nerviosismo en segundos con cada pulsación.</p>
           </article>
-          <article className="card-soft">
-            <h3>100% portatil</h3>
-            <p className="muted">Usala en casa, oficina o gimnasio sin depender de enchufes.</p>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Mejor concentración</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Mantén las manos ocupadas y la mente enfocada más tiempo.</p>
           </article>
-          <article className="card-soft">
-            <h3>Facil limpieza</h3>
-            <p className="muted">Agua + una gota de jabon y lista para el siguiente uso.</p>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Discreto y portátil</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Úsalo en clase, oficina o transporte sin llamar la atención.</p>
+          </article>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Satisfacción táctil real</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Pulsación mecánica agradable para descargar tensión al instante.</p>
+          </article>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Material resistente</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Diseñado para aguantar el uso diario sin perder sensación.</p>
+          </article>
+          <article className="card-soft benefit-card">
+            <div className="benefit-title-row">
+              <h3>Listo al momento</h3>
+              <span className="benefit-check" aria-hidden="true">✓</span>
+            </div>
+            <p className="muted">Sin apps ni configuración: lo sacas y empiezas a usarlo.</p>
           </article>
         </div>
       </section>
 
       <section className="section-block">
-        <h2>Comparativa rapida</h2>
+        <h2>Comparativa rápida</h2>
         <div className="compare card-soft">
+          <img src={descripcion2Img} alt="Detalle de construcción del producto" className="compare-image" />
           <div className="compare-row compare-head">
-            <span>Caracteristica</span>
-            <span>Smart Blender Pro</span>
-            <span>Generica</span>
+            <span>Característica</span>
+            <span>Teclado SlowClick</span>
+            <span>Genérica</span>
           </div>
           <div className="compare-row">
-            <span>Bateria</span>
-            <span>Alta autonomia</span>
+            <span>Reducción de estrés</span>
+            <span>Alta</span>
             <span>Media</span>
           </div>
           <div className="compare-row">
-            <span>Limpieza</span>
-            <span>Rapida</span>
-            <span>Mas lenta</span>
+            <span>Sensación táctil</span>
+            <span>Mecánica y precisa</span>
+            <span>Blanda/inconsistente</span>
+          </div>
+          <div className="compare-row">
+            <span>Nivel de ruido</span>
+            <span>Bajo</span>
+            <span>Medio/alto</span>
           </div>
           <div className="compare-row">
             <span>Portabilidad</span>
             <span>Muy alta</span>
             <span>Media</span>
+          </div>
+          <div className="compare-row">
+            <span>Uso prolongado</span>
+            <span>Cómodo</span>
+            <span>Fatiga en dedos</span>
+          </div>
+          <div className="compare-row">
+            <span>Durabilidad</span>
+            <span>Alta</span>
+            <span>Variable</span>
           </div>
         </div>
       </section>
@@ -428,16 +488,16 @@ function ProductPage() {
         <h2>Opiniones de clientes</h2>
         <div className="reviews-grid">
           <article className="card-soft">
-            <p>"La uso a diario antes del gym. Muy comoda y potente."</p>
+            <p>"La uso a diario antes del gym. Muy cómoda y potente."</p>
             <strong>- Marta R.</strong>
           </article>
           <article className="card-soft">
-            <p>"Entrega rapida y muy facil de limpiar. Compra top."</p>
+            <p>"Entrega rápida y muy fácil de limpiar. Compra top."</p>
             <strong>- Daniel P.</strong>
           </article>
           <article className="card-soft">
-            <p>"Buen tamano para llevar en la mochila."</p>
-            <strong>- Lucia M.</strong>
+            <p>"Buen tamaño para llevar en la mochila."</p>
+            <strong>- Lucía M.</strong>
           </article>
         </div>
       </section>
@@ -445,7 +505,7 @@ function ProductPage() {
       <section className="trust-icons card">
         <article>
           <span className="ti-icon">📦</span>
-          <p>Envio seguro</p>
+          <p>Envío seguro</p>
         </article>
         <article>
           <span className="ti-icon">🔒</span>
@@ -453,7 +513,7 @@ function ProductPage() {
         </article>
         <article>
           <span className="ti-icon">🛡</span>
-          <p>Garantia 30 dias</p>
+          <p>Garantía 30 días</p>
         </article>
         <article>
           <span className="ti-icon">✉</span>
@@ -467,12 +527,12 @@ function ProductPage() {
           {faqs.map((item) => (
             <details key={item.q} className="card-soft">
               <summary>{item.q}</summary>
-              {item.q === 'Cuanto tarda el envio?' ? (
+              {item.q === '¿Cuánto tarda el envío?' ? (
                 <p className="muted">
                   {item.a}
                   <br />
                   <br />
-                  El envio tarda de <strong>6 a 8</strong> dias habiles.
+                  El envío tarda de <strong>6 a 8</strong> días hábiles.
                 </p>
               ) : (
                 <p className="muted">{item.a}</p>
@@ -483,15 +543,16 @@ function ProductPage() {
       </section>
 
       <section className="guarantee card">
-        <h2>Envio y garantia</h2>
+        <h2>Envío y garantía</h2>
         <p className="muted">
           Compra protegida.
           <br />
           Seguimiento de pedido en todo momento.
           <br />
-          Soporte directo y 30 dias de devolucion.
+          Soporte directo y 30 días de devolución.
         </p>
       </section>
+
     </main>
   );
 }
