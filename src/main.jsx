@@ -125,6 +125,7 @@ function ProductPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
   const [pressedKeys, setPressedKeys] = useState([]);
+  const [videoError, setVideoError] = useState(false);
   const activeImage = productImages[activeIndex];
   const waitingImages = productImages.filter((_, index) => index !== activeIndex);
   const currentPrice = Number.parseFloat(product.price.replace('€', '').replace(',', '.'));
@@ -282,18 +283,28 @@ function ProductPage() {
       </section>
 
       <section className="flow-card card flow-text flow-media-stack">
-        <video
-          className="flow-image-media"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Demostración del uso del producto"
-        >
-          <source src="/IMG_5091.mp4" type="video/mp4" />
-          Tu navegador no soporta video.
-        </video>
+        {videoError ? (
+          <img
+            src={`${import.meta.env.BASE_URL}IMG_5091.gif`}
+            alt="Demostración del uso del producto"
+            className="flow-image-media"
+          />
+        ) : (
+          <video
+            className="flow-image-media"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster={`${import.meta.env.BASE_URL}IMG_5091.gif`}
+            onError={() => setVideoError(true)}
+            aria-label="Demostración del uso del producto"
+          >
+            <source src={`${import.meta.env.BASE_URL}IMG_5091.mp4`} type="video/mp4" />
+            Tu navegador no soporta video.
+          </video>
+        )}
         <h2>¿Manos inquietas?</h2>
         <p>
           Si te muerdes las uñas, esto es para ti.
